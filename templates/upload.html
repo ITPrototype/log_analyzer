@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Upload Log File</title>
+  <style>
+    body{font-family:sans-serif;margin:40px;}
+    .box{border:1px solid #ddd;padding:20px;max-width:500px;margin:auto;border-radius:10px;}
+    input,select,button{margin:10px 0;padding:8px;width:100%;}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Upload Log File</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Upload & Import</button>
+    </form>
+    {% if messages %}
+      <ul>
+        {% for msg in messages %}
+          <li>{{ msg }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <p><a href="{% url 'index' %}">← Back to Dashboard</a></p>
+  </div>
+</body>
+</html>
